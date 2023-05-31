@@ -18,10 +18,20 @@
 // 82 -> 10
 // 9012 -> 12
 
+// Console.Clear();
+// Console.Write("Введите число: ");
+// string number = Console.ReadLine()!;
+// int summa = 0;
+// for (int i = 0; i < number.Length; i++)
+//     summa = summa + Convert.ToInt32(number[i].ToString());
+// Console.WriteLine($"{number} -> {summa}");
+
+// Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
+// 1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
+// 6, 1, 33 -> [6, 1, 33]
+
 Console.Clear();
-Console.Write("Введите число: ");
-string number = Console.ReadLine()!;
-int summa = 0;
-for (int i = 0; i < number.Length; i++)
-    summa = summa + Convert.ToInt32(number[i].ToString());
-Console.WriteLine($"{number} -> {summa}");
+int[] array = new int[8];
+for (int i = 0; i < array.Length; i++)
+    array[i] = new Random().Next(1, 101);
+Console.WriteLine($"-> [{string.Join(", ", array)}]");
