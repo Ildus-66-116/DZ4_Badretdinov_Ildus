@@ -30,8 +30,58 @@
 // 1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
 // 6, 1, 33 -> [6, 1, 33]
 
+// Console.Clear();
+// int[] array = new int[8];
+// for (int i = 0; i < array.Length; i++)
+//     array[i] = new Random().Next(1, 101);
+// Console.WriteLine($"-> [{string.Join(", ", array)}]");
+
+
+// Суперсдвиг
+// Входные данные
+// Первая строка входного файла INPUT.TXT содержит натуральное число N, 
+// во второй строке записаны N целых чисел Ai, а в последней – целое число K. (1 ≤ N ≤ 105, |K| ≤ 105, |Ai| ≤ 100).
+
+// Выходные данные
+// В выходной файл OUTPUT.TXT выведите полученную последовательность.
+
+
 Console.Clear();
-int[] array = new int[8];
-for (int i = 0; i < array.Length; i++)
-    array[i] = new Random().Next(1, 101);
-Console.WriteLine($"-> [{string.Join(", ", array)}]");
+Console.Write("Введите количество элементов: ");
+int n = int.Parse(Console.ReadLine()!);
+while(n > 100000 || n < 1)
+     {
+     Console.Write("Вы ошиблись! \nВведите от 1 до 100 000 число: ");
+     n = int.Parse(Console.ReadLine()!);
+     }
+Console.Write("Введите число на сколько нужно сдвинуть: ");
+int k = int.Parse(Console.ReadLine()!);
+while(k > 100000)
+     {
+     Console.Write("Вы ошиблись! \nВведите от 0 до 100 000 число: ");
+     k = int.Parse(Console.ReadLine()!);
+     }
+int[] array = new int[n];
+for(int i = 0; i < n; i++) array[i] = new Random().Next(0, 101);
+Console.WriteLine(n);
+Console.WriteLine($"[{string.Join(", ", array)}]");
+Console.Write(k);
+Console.WriteLine();
+int k1 = 1;
+if(k > 0) 
+     {k1 = n-k;
+     for(int i = 0; i < k; i++)
+    {
+    int temp = array[i];
+//     for(int j = i+1; j < k; j++)
+//           {
+//           int temp1 = array[j];
+//           array[j] = array[i];
+//           array[j+1] = temp1;
+//           }
+    array[i] = array[k1+i];
+    array[k1+i] = temp;
+    }
+     }
+Console.WriteLine($"Результат: [{string.Join(", ", array)}]");
+// else k1 = k * -1;
