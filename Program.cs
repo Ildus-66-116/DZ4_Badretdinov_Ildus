@@ -46,47 +46,73 @@
 // В выходной файл OUTPUT.TXT выведите полученную последовательность.
 
 
+// Console.Clear();
+// Console.Write("Введите количество элементов: ");
+// int n = int.Parse(Console.ReadLine()!);
+// while(n > 100000 || n < 1)
+//      {
+//      Console.Write("Вы ошиблись! \nВведите от 1 до 100 000 число: ");
+//      n = int.Parse(Console.ReadLine()!);
+//      }
+// Console.Write("Введите число на сколько нужно сдвинуть: ");
+// int k = int.Parse(Console.ReadLine()!);
+// while(k > 100000)
+//      {
+//      Console.Write("Вы ошиблись! \nВведите от 0 до 100 000 число: ");
+//      k = int.Parse(Console.ReadLine()!);
+//      }
+// int[] array = new int[n];
+// for(int i = 0; i < n; i++) array[i] = new Random().Next(0, 101);
+// Console.WriteLine(n);
+// Console.WriteLine($"[{string.Join(", ", array)}]");
+// Console.Write(k);
+// Console.WriteLine();
+// int k1 = 1;
+// if(k > 0)
+//    {
+//    for(int j = 0; j < k; j++)
+//      {
+//      int temp1 = array[array.Length -1];
+//      for(int i = array.Length - 2; i >= 0; i--) array[i+1] = array[i];
+//      array[0] = temp1;
+//      }
+//    }
+
+// else 
+//      {
+//      k1 = k * -1;
+//      for(int j1 = 0; j1 < k1; j1++)
+//           {
+//           int temp2 = array[0];
+//           for(int i1 = 1; i1 < array.Length; i1++) array[i1-1] = array[i1];
+//           array[array.Length - 1] = temp2;
+//           }
+//      }
+
+// Console.WriteLine($"Результат: [{string.Join(", ", array)}]");
+
+
+//Гипотеза Гольдбаха
+
 Console.Clear();
-Console.Write("Введите количество элементов: ");
+Console.Write("Введите четное число: ");
 int n = int.Parse(Console.ReadLine()!);
-while(n > 100000 || n < 1)
+while(n > 998 || n < 4 || n % 2 != 0)
      {
-     Console.Write("Вы ошиблись! \nВведите от 1 до 100 000 число: ");
+     Console.Write("Вы ошиблись! \nВведите от 4 до 998 четное число: ");
      n = int.Parse(Console.ReadLine()!);
      }
-Console.Write("Введите число на сколько нужно сдвинуть: ");
-int k = int.Parse(Console.ReadLine()!);
-while(k > 100000)
+int n1 = 1;
+int n2 = 1;
+for (int i = 1; i < n; i = i+2)
      {
-     Console.Write("Вы ошиблись! \nВведите от 0 до 100 000 число: ");
-     k = int.Parse(Console.ReadLine()!);
-     }
-int[] array = new int[n];
-for(int i = 0; i < n; i++) array[i] = new Random().Next(0, 101);
-Console.WriteLine(n);
-Console.WriteLine($"[{string.Join(", ", array)}]");
-Console.Write(k);
-Console.WriteLine();
-int k1 = 1;
-if(k > 0)
-   {
-   for(int j = 0; j < k; j++)
-     {
-     int temp1 = array[array.Length -1];
-     for(int i = array.Length - 2; i >= 0; i--) array[i+1] = array[i];
-     array[0] = temp1;
-     }
-   }
-
-else 
-     {
-     k1 = k * -1;
-     for(int j1 = 0; j1 < k1; j1++)
+     for(int j = 3; j < n; j = j +2)
           {
-          int temp2 = array[0];
-          for(int i1 = 1; i1 < array.Length; i1++) array[i1-1] = array[i1];
-          array[array.Length - 1] = temp2;
+          if(n == i + j) 
+               {
+               n1 = i; 
+               n2 = j;
+               }
           }
      }
-
-Console.WriteLine($"Результат: [{string.Join(", ", array)}]");
+Console.Write($"{n2} {n1}");
