@@ -68,20 +68,25 @@ Console.WriteLine($"[{string.Join(", ", array)}]");
 Console.Write(k);
 Console.WriteLine();
 int k1 = 1;
-if(k > 0) 
-     {k1 = n-k;
-     for(int i = 0; i < k; i++)
-    {
-    int temp = array[i];
-//     for(int j = i+1; j < k; j++)
-//           {
-//           int temp1 = array[j];
-//           array[j] = array[i];
-//           array[j+1] = temp1;
-//           }
-    array[i] = array[k1+i];
-    array[k1+i] = temp;
-    }
+if(k > 0)
+   {
+   for(int j = 0; j < k; j++)
+     {
+     int temp1 = array[array.Length -1];
+     for(int i = array.Length - 2; i >= 0; i--) array[i+1] = array[i];
+     array[0] = temp1;
      }
+   }
+
+else 
+     {
+     k1 = k * -1;
+     for(int j1 = 0; j1 < k1; j1++)
+          {
+          int temp2 = array[0];
+          for(int i1 = 1; i1 < array.Length; i1++) array[i1-1] = array[i1];
+          array[array.Length - 1] = temp2;
+          }
+     }
+
 Console.WriteLine($"Результат: [{string.Join(", ", array)}]");
-// else k1 = k * -1;
